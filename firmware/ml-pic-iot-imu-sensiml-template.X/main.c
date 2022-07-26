@@ -239,7 +239,7 @@ int main ( void )
     /* Initialize our data buffer */
     buffer_init(&snsr_buffer);
 
-    printf("\n");
+    printf("Startup \n");
 
     /* Application init routine */
     app_failed = 1;
@@ -303,7 +303,8 @@ int main ( void )
         /* STATE CHANGE - Application is streaming */
         tickrate = TICK_RATE_SLOW;
 #endif //STREAM_FORMAT_IS(SMLSS)
-
+        kb_model_init();
+        sml_output_init(NULL);
         app_failed = 0;
         break;
     }
@@ -312,32 +313,11 @@ int main ( void )
     {
         /* Maintain state machines of all system modules. */
         SYS_Tasks ( );
-
+        LED_RED_On();
         if (sensor.status != SNSR_STATUS_OK) {
             printf("ERROR: Got a bad sensor status: %d\n", sensor.status);
             break;
         }
-#if STREAM_FORMAT_IS(SMLSS)
-        else if (!ssi_connected()) {
-            if (ringbuffer_get_read_bytes(&uartRxBuffer) >= CONNECT_CHARS) {
-                ssi_try_connect();
-                ringbuffer_advance_read_index(&uartRxBuffer, ringbuffer_get_read_bytes(&uartRxBuffer));
-            }
-            if (ssi_connected()) {
-                /* STATE CHANGE - Application is streaming */
-                tickrate = TICK_RATE_SLOW;
-
-                /* Reset the sensor buffer */
-                MIKRO_INT_CallbackRegister(Null_Handler);
-                buffer_reset(&snsr_buffer);
-                MIKRO_INT_CallbackRegister(SNSR_ISR_HANDLER);
-            }
-            if (read_timer_ms() - ssi_adtimer > 500) {
-                ssi_adtimer = read_timer_ms();
-                UART_Write((uint8_t *) json_config_str, strlen(json_config_str));
-            }
-        }
-#endif
         else if (snsr_buffer.overrun == true) {
             printf("\n\n\nOverrun!\n\n\n");
 
@@ -362,25 +342,7 @@ int main ( void )
             buffer_data_t *ptr;
             size_t rdcnt = buffer_get_read_buffer(&snsr_buffer, &ptr);
             while (rdcnt >= SNSR_SAMPLES_PER_PACKET) {
-#if STREAM_FORMAT_IS(ASCII)
-                printf("%d", ptr[0]);
-                for (int j=1; j < SNSR_NUM_AXES*SNSR_SAMPLES_PER_PACKET; j++) {
-                    printf(" %d", ptr[j]);
-                }
-                printf("\n");
-#elif STREAM_FORMAT_IS(MDV)
-                uint8_t headerbyte = MDV_START_OF_FRAME;
-                UART_Write(&headerbyte, 1);
-                UART_Write((uint8_t *) ptr, sizeof(buffer_frame_t)*SNSR_SAMPLES_PER_PACKET);
-                headerbyte = ~headerbyte;
-                UART_Write(&headerbyte, 1);
-#elif STREAM_FORMAT_IS(SMLSS)
-#if (SSI_JSON_CONFIG_VERSION == 2)
-                ssiv2_publish_sensor_data(0, (uint8_t*) ptr, SNSR_SAMPLES_PER_PACKET*sizeof(buffer_frame_t));
-#elif (SSI_JSON_CONFIG_VERSION == 1)
-                ssiv1_publish_sensor_data((uint8_t*) ptr, SNSR_SAMPLES_PER_PACKET*sizeof(buffer_frame_t));
-#endif
-#endif //STREAM_FORMAT_IS(ASCII)
+                int ret = sml_recognition_run((snsr_data_t *) ptr++,1, SNSR_NUM_AXES,0);    
                 rdcnt -= SNSR_SAMPLES_PER_PACKET;
                 ptr += SNSR_NUM_AXES * SNSR_SAMPLES_PER_PACKET;
                 buffer_advance_read_index(&snsr_buffer, SNSR_SAMPLES_PER_PACKET);
@@ -389,9 +351,23 @@ int main ( void )
 #else   /* Template code for processing sensor data */
         else {
             buffer_data_t *ptr;
+            int16_t Ax,Ay,Az;
+            int16_t Gx, Gy, Gz;
             size_t rdcnt = buffer_get_read_buffer(&snsr_buffer, &ptr);
+            printf("rdcnt = %u\n\r",rdcnt);
             while (rdcnt--) {
+                Ax = *ptr++;
+                Ay = *ptr++;
+                Az = *ptr++;
+                Gx = *ptr++;
+                Gy = *ptr++;
+                Gz = *ptr++;
+                        
+            //printf("what is in ptr? %i, %i %i\n\r",Ax,Ay,Az);
+            //printf("what is in ptr? %i, %i %i\n\r",Gx,Gy,Gz);
+            //ptr++;
                 // process sesnsor data
+            printf("rdcnt = %u\n\r",rdcnt);
                 buffer_advance_read_index(&snsr_buffer, 1);
             }
         }
