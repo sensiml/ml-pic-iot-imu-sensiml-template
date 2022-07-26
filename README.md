@@ -44,13 +44,13 @@ To deploy a knowledge pack for the PIC-IoT Development Kit:
 <div style="page-break-after: always;"></div>
 
 # Knowledge Pack Integration
-## Binary Format
-If you deployed a knowledge pack in the *Binary* format, the archive should contain the binary file which can be written directly to the PIC-IoT Development Board.
 
 ## Library Format
 If you deployed a knowledge pack in the *Library* format, the archive should contain a complete, ready to compile, MPLAB X project. Follow the steps below to compile your project:
 
 1. In MPLAB X, open up the .X project folder under the `firmware` folder of the knowledge pack
+2. Ensure that the new knowledge pack has replaced the one supplied in this archive.
+
 
 Your project should now be ready to compile.
 
@@ -84,7 +84,7 @@ When operating normally, the firmware prints the classification prediction (clas
 - Stop bits 1
 - Parity None
 
-A sample of the terminal output is shown in the figure below.
+A sample of the terminal output is shown in the figure below.  Note the knowledge pack used for this example produces a test pattern 1,2,3,3,2,1...
 
 | ![Terminal output](assets/terminal-output.png) |
 | :--: |
@@ -105,7 +105,7 @@ In addition to reading the text output of the firmware with a terminal emulator,
 3. Change to the open-gateway directory and run the open-gateway application, passing in the knowledge pack model.json description file:
    > `cd open-gateway`\
    > `python app.py -m $(find ../firmware/knowledgepack/ -name model.json)`
-4. Connect to the PIC-IoT board in the gateway application:
+4. Connect to the PIC-IoT Development Kit in the gateway application:
    * Select the `Recognition` device mode.
    * Select `Serial` connection type, and enter the UART address (e.g. COM4) in the `Device ID` field.
    * Click `Connect To Device`.
