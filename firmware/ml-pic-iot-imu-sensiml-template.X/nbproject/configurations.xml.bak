@@ -41,6 +41,7 @@
       <itemPath>sensor_config.h</itemPath>
     </logicalFolder>
     <logicalFolder name="lib" displayName="lib" projectFiles="true">
+     
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -114,7 +115,7 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC24F-GA-GB_DFP" vendor="Microchip" version="1.5.181"/>
+        <pack name="PIC24F-GA-GB_DFP" vendor="Microchip" version="1.7.214"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -144,6 +145,208 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
+      <item path="../knowledgepack/sensiml/lib/array_contains.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/calc_area.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/column_to_row_complex.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/crossing_rate.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/dsp_dtw_distance.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/dsp_l1_distance.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/dsp_lsup_distance.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/fftr.c" ex="true" overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/fftr_utils.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/fg_stats_mean.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/fg_stats_stdev.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/fixlog.c" ex="true" overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/imfcc.c" ex="true" overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/kb.c" ex="true" overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/kb_debug.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/kb_pipeline.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/ma_symmetric.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/max_min_high_low_freq.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/mean.c" ex="true" overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/pme.c" ex="true" overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/pme_trained_neurons.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/ratio_diff_impl.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/rb.c" ex="true" overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/save_sensor_data.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/sf_downsample_by_averaging.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/sf_downsample_by_decimation.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/sg_windowing.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/sortarray.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/sorted_copy.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/st_absolute_average.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/st_average.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/st_high_pass_filter.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/st_moving_average.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/stat_mean.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/stat_moment.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/stats_percentile_presorted.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/std.c" ex="true" overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/sum.c" ex="true" overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/tr_min_max_scale.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/utils_array.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/utils_array_max_uint8.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/utils_bitwise_abs_val.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/utils_buffer_absmean.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/utils_buffer_abssum.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/utils_buffer_argmax.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/utils_buffer_autoscale.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/utils_buffer_cumsum.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/utils_buffer_max.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/utils_buffer_mean.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/utils_buffer_median.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/utils_buffer_min.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/utils_buffer_min_max.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/utils_buffer_std.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/utils_buffer_variance.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../knowledgepack/sensiml/lib/utils_tr_sensor.c"
+            ex="true"
+            overriding="false">
+      </item>
       <C30>
         <property key="cast-align" value="false"/>
         <property key="code-model" value="large-code"/>
